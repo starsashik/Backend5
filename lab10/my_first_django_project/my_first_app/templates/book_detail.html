@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Детали книги</h2>
+
+<p><strong>Название:</strong> {{ book.title }}</p>
+<p><strong>Автор:</strong> {{ book.author.name }}</p>
+<p><strong>Дата публикации:</strong> {{ book.publication_date }}</p>
+
+<p><strong>Издатель:</strong>
+    {% if book.publisher %}
+    {{ book.publisher.name }} ({{ book.publisher.address }})
+    {% else %}
+    не указан
+    {% endif %}
+</p>
+
+<p><strong>Жанры:</strong>
+    {% if book.genres.all %}
+    {% for g in book.genres.all %}
+    {{ g.name }}{% if not forloop.last %}, {% endif %}
+    {% empty %}
+    нет жанров
+    {% endfor %}
+    {% endif %}
+</p>
+
+<p><a href="{% url 'book-list' %}">← Назад к списку книг</a></p>
+{% endblock %}

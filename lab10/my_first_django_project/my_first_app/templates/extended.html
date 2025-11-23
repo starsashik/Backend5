@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Расширенный шаблон</h2>
+<a href="{% url 'main' %}">Проверка БД</a> |
+<p>Это содержимое, переопределённое в дочернем шаблоне.</p>
+
+{% include "partials/footer.html" %}
+{% endblock %}

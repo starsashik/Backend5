@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Список авторов</h2>
+
+<p><a href="{% url 'author-create' %}">➕ Добавить автора</a></p>
+
+<table border="1" cellpadding="4" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Дата рождения</th>
+        <th>Действия</th>
+    </tr>
+    {% for author in authors %}
+    <tr>
+        <td>{{ author.id }}</td>
+        <td>{{ author.name }}</td>
+        <td>{{ author.birth_date }}</td>
+        <td>
+            <a href="{% url 'author-details' author.id %}">Детали</a> |
+            <a href="{% url 'author-update' author.id %}">Редактировать</a> |
+            <a href="{% url 'author-delete' author.id %}">Удалить</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">Авторов пока нет.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

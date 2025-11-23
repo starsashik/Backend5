@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Lab</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+<header>
+    <h1>Django лабораторная</h1>
+    <nav>
+        <a href="{% url 'home' %}">Главная</a> |
+        <a href="{% url 'author-list' %}">Авторы</a> |
+        <a href="{% url 'book-list' %}">Книги</a> |
+        <a href="{% url 'books-by-author' %}">Книги по автору</a> |
+        <a href="{% url 'books-values' %}">values / values_list</a> |
+        <a href="{% url 'books-sets' %}">Операции с множествами</a> |
+        <a href="{% url 'books-aggregates' %}">Агрегаты</a> |
+        <a href="{% url 'books-with-publishers' %}">Книги + издатели</a> |
+        <a href="{% url 'books-with-genres' %}">Книги + жанры</a>
+    </nav>
+    <hr>
+</header>
+
+<main>
+    {# блок для конкретных страниц #}
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <hr>
+    <p>&copy; 2025. Лаба по Django.</p>
+</footer>
+</body>
+</html>

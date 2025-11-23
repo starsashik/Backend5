@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First Django Template</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+<h1>Список имён</h1>
+
+<p>Текущее имя: {{ current_name }}</p>
+
+{% if age %}
+<p>Возраст: {{ age }}</p>
+{% else %}
+<p>Возраст не указан</p>
+{% endif %}
+
+<p>Всего имён: {{ names|length }}</p>
+
+{% if names %}
+<ul>
+    {% for n in names %}
+    <li>{{ n|upper }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Список пуст.</p>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

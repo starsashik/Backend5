@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Список книг</h2>
+
+<p><a href="{% url 'book-create' %}">➕ Добавить книгу</a></p>
+
+<table border="1" cellpadding="4" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Дата публикации</th>
+        <th>Издатель</th>
+        <th>Действия</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td><a href="{% url 'book-detail' book.id %}">{{ book.title }}</a></td>
+        <td>{{ book.author.name }}</td>
+        <td>{{ book.publication_date }}</td>
+        <td>
+            {% if book.publisher %}
+            {{ book.publisher.name }}
+            {% else %}
+            —
+            {% endif %}
+        </td>
+        <td>
+            <a href="{% url 'book-update' book.id %}">Редактировать</a> |
+            <a href="{% url 'book-delete' book.id %}">Удалить</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="6">Книг пока нет.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

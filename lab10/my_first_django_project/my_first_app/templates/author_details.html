@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Детали автора</h2>
+
+<p><strong>Имя:</strong> {{ author.name }}</p>
+<p><strong>Дата рождения:</strong> {{ author.birth_date }}</p>
+<p><strong>Биография:</strong> {{ author.bio }}</p>
+
+{% if details %}
+<h3>Контакты</h3>
+<p><strong>Email:</strong> {{ details.email }}</p>
+<p><strong>Телефон:</strong> {{ details.phone }}</p>
+{% else %}
+<p>Дополнительные детали автора пока не заполнены.</p>
+{% endif %}
+
+<p><a href="{% url 'author-list' %}">← Назад к списку авторов</a></p>
+{% endblock %}

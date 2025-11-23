@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Операции с множествами над QuerySet</h2>
+
+<h3>Книги до 2020-01-01 (qs_old)</h3>
+<ul>
+    {% for book in qs_old %}
+    <li>{{ book.title }} ({{ book.publication_date }})</li>
+    {% empty %}
+    <li>Нет книг.</li>
+    {% endfor %}
+</ul>
+
+<h3>Книги после 2015-01-01 (qs_new)</h3>
+<ul>
+    {% for book in qs_new %}
+    <li>{{ book.title }} ({{ book.publication_date }})</li>
+    {% empty %}
+    <li>Нет книг.</li>
+    {% endfor %}
+</ul>
+
+<h3>Union (объединение)</h3>
+<ul>
+    {% for book in union_qs %}
+    <li>{{ book.title }} ({{ book.publication_date }})</li>
+    {% empty %}
+    <li>Нет книг.</li>
+    {% endfor %}
+</ul>
+
+<h3>Intersection (пересечение)</h3>
+<ul>
+    {% for book in intersection_qs %}
+    <li>{{ book.title }} ({{ book.publication_date }})</li>
+    {% empty %}
+    <li>Нет книг.</li>
+    {% endfor %}
+</ul>
+
+<h3>Difference (разность qs_old - qs_new)</h3>
+<ul>
+    {% for book in difference_qs %}
+    <li>{{ book.title }} ({{ book.publication_date }})</li>
+    {% empty %}
+    <li>Нет книг.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

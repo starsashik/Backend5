@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Агрегатные функции по книгам</h2>
+
+<ul>
+    <li>Всего книг: {{ stats.total_books }}</li>
+    <li>Минимальная дата публикации: {{ stats.min_date }}</li>
+    <li>Максимальная дата публикации: {{ stats.max_date }}</li>
+    <li>Средний год публикации: {{ stats.avg_year }}</li>
+</ul>
+{% endblock %}

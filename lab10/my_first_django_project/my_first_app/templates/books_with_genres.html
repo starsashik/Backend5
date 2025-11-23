@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Книги с указанием жанров (Many-To-Many)</h2>
+
+<ul>
+    {% for book in books %}
+    <li>
+        "{{ book.title }}" — жанры:
+        {% with genres=book.genres.all %}
+        {% if genres %}
+        {% for g in genres %}
+        {{ g.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+        {% else %}
+        нет жанров
+        {% endif %}
+        {% endwith %}
+    </li>
+    {% empty %}
+    <li>Книг нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

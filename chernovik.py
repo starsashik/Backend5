@@ -1,0 +1,8 @@
+f = open("C:/Users/alexa/Desktop/Task3.txt", mode="r", encoding="ANSI")
+s = f.read()
+print(s)
+s = s.replace(",", ".")
+print(s)
+f.close()
+f = open("C:/Users/alexa/Desktop/Task3.txt", mode="w", encoding="ANSI")
+f.write(s)

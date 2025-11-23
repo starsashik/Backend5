@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Книги с указанием издателя (One-To-Many)</h2>
+
+<ul>
+    {% for book in books %}
+    <li>
+        "{{ book.title }}" — автор: {{ book.author.name }},
+        издатель:
+        {% if book.publisher %}
+        {{ book.publisher.name }} ({{ book.publisher.address }})
+        {% else %}
+        не указан
+        {% endif %}
+    </li>
+    {% empty %}
+    <li>Книг нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

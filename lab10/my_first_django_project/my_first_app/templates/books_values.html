@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Книги через values и values_list</h2>
+
+<h3>values (список словарей)</h3>
+<table border="1" cellpadding="4" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Дата публикации</th>
+    </tr>
+    {% for b in books_values %}
+    <tr>
+        <td>{{ b.id }}</td>
+        <td>{{ b.title }}</td>
+        <td>{{ b.publication_date }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">Книг нет.</td></tr>
+    {% endfor %}
+</table>
+
+<h3>values_list (только названия)</h3>
+<ul>
+    {% for title in titles_list %}
+    <li>{{ title }}</li>
+    {% empty %}
+    <li>Список пуст.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
